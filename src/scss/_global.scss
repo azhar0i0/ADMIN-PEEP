@@ -1,0 +1,183 @@
+@use "./abstracts/" as *;
+@import url(../assets/fonts/css/fontiran.css);
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap");
+
+html {
+  /* ****Colors**** */
+  --primaryColor: #005a9c;
+  --secondaryColor: #005a9c;
+
+  // light theme
+  --bgc: #f2f2f2;
+  --card-bgc: #f9f9fa;
+  --text-color: #424750;
+
+  // light theme status
+  --approved-bgc: rgba(86, 240, 0, 0.3);
+  --approved-textColor: #246500;
+  --pending-bgc: rgba(45, 204, 255, 0.3);
+  --pending-textColor: #086785;
+  --rejected-bgc: rgba(255, 56, 56, 0.3);
+  --rejected-textColor: #9d0e0e;
+
+  /* ****Font family**** */
+  --fontFamily: "Poppins", "Roboto", sans-serif;
+}
+
+html[theme="dark"] {
+  // dark theme
+  --bgc: #1f2a33;
+  --card-bgc: #17212a;
+  --text-color: #ebebeb;
+
+  --primaryColor: #005a9c;
+  --secondaryColor: #005a9c;
+
+  // dark theme status
+  --approved-bgc: rgba(66, 171, 8, 0.3);
+  --approved-textColor: #d0ffb6;
+  --pending-bgc: rgba(45, 204, 255, 0.3);
+  --pending-textColor: #a5e9ff;
+  --rejected-bgc: rgba(255, 56, 56, 0.3);
+  --rejected-textColor: #f2bebe;
+}
+
+html[dir="rtl"] {
+  --fontFamily: iranyekan, "IRANSans", "Tahoma";
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+input,
+select {
+  font-family: inherit;
+  color: inherit;
+  font-size: inherit;
+  &:focus {
+    background-color: transparent;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+::placeholder {
+  color: #b9b9b9;
+}
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+/* general styles */
+body {
+  background-color: var(--bgc);
+  color: var(--text-color);
+  font-family: var(--fontFamily);
+  font-size: $fontSizeBodyLarge;
+  line-height: 1.5em;
+  overflow-x: hidden;
+
+  @include tablet {
+    background-color: var(--secondaryColor);
+  }
+}
+
+.title {
+  font-size: $fontSizeHeadlineSmall;
+  font-weight: 700;
+  line-height: 2em;
+  margin-bottom: 2rem;
+}
+
+.subTitle {
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 2px 10px;
+  text-align: center;
+  font-size: 10px;
+  border-radius: $largeBorderRadius;
+}
+
+.approved {
+  background-color: var(--approved-bgc);
+  color: var(--approved-textColor);
+}
+
+.pending {
+  background-color: var(--pending-bgc);
+  color: var(--pending-textColor);
+}
+
+.rejected {
+  background-color: var(--rejected-bgc);
+  color: var(--rejected-textColor);
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+.rtl {
+  font-family: iranyekan, "IRANSans", "Tahoma";
+  direction: rtl;
+  text-align: right;
+}
+
+.error {
+  color: var(--rejected-textColor);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bgc);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondaryColor);
+  border-radius: 100vw;
+}
